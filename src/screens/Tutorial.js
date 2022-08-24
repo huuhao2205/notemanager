@@ -56,16 +56,6 @@ export default function Tutorial() {
           </View>
           <View style={{ width, height, alignItems: 'center', marginTop: 5 }}>
             <Image
-              source={require('../../assets/name.png')}
-              style={styles.imageStyle}
-            />
-            <View style={styles.wrapper}>
-              <Text style={styles.header}>Enter Your Name</Text>
-              <Text style={styles.paragraph}>At the first time, you must enter your name to continue</Text>
-            </View>
-          </View>
-          <View style={{ width, height, alignItems: 'center', marginTop: 5 }}>
-            <Image
               source={require('../../assets/create.png')}
               style={styles.imageStyle}
             />
@@ -116,7 +106,7 @@ export default function Tutorial() {
           </View>
         </ScrollView>
         <View style={styles.paginationWrapper}>
-          {Array.from(Array(7).keys()).map((key, index) => (
+          {Array.from(Array(6).keys()).map((key, index) => (
             <View style={[styles.paginationDots, { opacity: pageIndex === index ? 1 : 0.2 }]} key={index} />
           ))}
         </View>

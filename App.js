@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import Intro from './src/screens/Intro';
 import NoteScreen from './src/screens/NoteScreen';
 import NoteDetail from './src/components/NoteDetail';
 import NoteProvider from './src/contexts/NoteProvider';
@@ -16,22 +15,7 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const [user, setUser] = useState({});
-  const [isAppFirstTimeOpen, setIsAppFirstTimeOpen] = useState(false);
-  const findUser = async () => {
-    const result = await AsyncStorage.getItem('user');
 
-    if (result === null) return setIsAppFirstTimeOpen(true);
-
-    setUser(JSON.parse(result));
-    setIsAppFirstTimeOpen(false);
-  };
-
-  useEffect(() => {
-    findUser();
-  }, []);
-
-  const RenderNoteScreen = props => <NoteScreen {...props} user={user} />;
   function HomeTabs() {
     return (
       <Tab.Navigator
@@ -62,21 +46,19 @@ export default function App() {
           labelStyle: { fontSize: 15, fontWeight: 'bold' },
         }}
       >
-        <Tab.Screen name={'NoteScreen'} component={RenderNoteScreen} options={{ header: () => null }} />
+        <Tab.Screen name={'NoteScreen'} component={NoteScreen} options={{ header: () => null }} />
         <Tab.Screen name={'Tutorial'} component={Tutorial} options={{ header: () => null }} />
       </Tab.Navigator>
     );
   }
 
 
-  if (isAppFirstTimeOpen) return <Intro onFinish={findUser} />;
   return (
     <NavigationContainer>
       <NoteProvider>
         <Stack.Navigator
           initialRouteName='Splash'
-          screenOptions={{ headerShown: false }}
-        >
+          screenOptions={{ headerShown: false }}>
           <Stack.Screen component={Splash} name='Splash' />
           <Stack.Screen component={HomeTabs} name='HomeTabs' />
           <Stack.Screen component={NoteDetail} name='NoteDetail' />

@@ -98,7 +98,7 @@ const NoteScreen = ({ user, navigation }) => {
         <StatusBar barStyle='dark-content' backgroundColor={colors.LIGHT} />
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.container}>
-            <Text style={styles.header}>{`Good ${greet} ${user.name}`}</Text>
+            <Text style={styles.header}>{`Good ${greet} `}</Text>
             <View style={styles.headerview}>
               <Text style={styles.header1}>MY NOTES</Text>
             </View>

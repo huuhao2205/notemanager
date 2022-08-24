@@ -27,8 +27,8 @@ const SearchBar = ({ containerStyle, value, onClear, onChangeText }) => {
 
 const styles = StyleSheet.create({
   searchBar: {
-    borderWidth: 0.5,
-    borderColor: colors.PRIMARY,
+    borderWidth: 1.5,
+    borderColor: '#FF00FF',
     height: 45,
     borderRadius: 40,
     paddingLeft: 15,
